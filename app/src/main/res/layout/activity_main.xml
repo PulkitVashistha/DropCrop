@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--<ScrollView-->
+        <!--android:id="@+id/scrollView1"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="7">-->
+
+        <!--<HorizontalScrollView-->
+            <!--android:id="@+id/horizontalScrollView1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" >-->
+            <!---->
+            <!--<LinearLayout-->
+                <!--android:gravity="top"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content" >-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/img"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"/>-->
+
+            <!--</LinearLayout>-->
+        <!--</HorizontalScrollView>-->
+    <!--</ScrollView>-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/img"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="CROP"
+        android:layout_margin="10dp"
+        android:background="#000000"
+        android:textColor="#ffff"
+        android:textSize="20sp" />
+
+</RelativeLayout>
