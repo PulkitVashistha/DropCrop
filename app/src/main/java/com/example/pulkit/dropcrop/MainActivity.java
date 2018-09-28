@@ -44,7 +44,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView imgView;
+    PhotoView imgView;
     Button buttonview;
     Bitmap bitmap;
     Bitmap img;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imgView = (ImageView)findViewById(R.id.img);
+        imgView = (PhotoView) findViewById(R.id.img);
         buttonview = (Button)findViewById(R.id.button);
 
 //      progress bar set up--------->
@@ -124,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
                 },
                 100);
 
+
+
+
         buttonview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,9 +138,13 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(MainActivity.this, "Image not stored: Error", Toast.LENGTH_SHORT).show();
 
 //                performCrop(uri);
+                Bitmap result = Bitmap.createBitmap(imgView.getWidth(), imgView.getHeight(), Bitmap.Config.RGB_565);
+                Canvas c = new Canvas(result);
+                imgView.draw(c);
 
-                Uri u=getImageUri(MainActivity.this,bitmap);
-                CropImage.activity(u).start(MainActivity.this);
+                Uri u=getImageUri(MainActivity.this,result);
+                if(saveImage(result)) Toast.makeText(MainActivity.this,"Image saved",Toast.LENGTH_SHORT).show();
+                else Toast.makeText(MainActivity.this,"Image not saved",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -271,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        if(requestCode==RESULT_OK && resultCode==10 && data!=null){
 //            Bundle extras = data.getExtras();
@@ -280,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
 //            Uri uri=saveImage(bitmap);
 //            Picasso.with(this).load(uri).into(imgView);
 //        }
-
+*//*
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
@@ -298,8 +305,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
+    }*//*
+*/
     public static final Uri getUriToDrawable(@NonNull Context context,
                                              @AnyRes int drawableId) {
         Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
